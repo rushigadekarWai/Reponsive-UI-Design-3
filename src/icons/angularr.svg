@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.001" height="32" viewBox="0 0 32.001 32">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_151846" data-name="Rectangle 151846" width="32" height="32" rx="4" transform="translate(91 1)" fill="#dab92d"/>
+    </clipPath>
+  </defs>
+  <g id="Group_193908" data-name="Group 193908" transform="translate(-91 -1)">
+    <rect id="Rectangle_151844" data-name="Rectangle 151844" width="32" height="32" rx="4" transform="translate(91 1)" fill="#b3b3b3"/>
+    <g id="g10" transform="translate(-93.174 641.719)">
+      <g id="g12" transform="translate(188.846 -636.719)">
+        <path id="path16" d="M366.123-614.565l-10.264-3.5v21.492l8.6-4.761Z" transform="translate(-344.593 619.323)" fill="#af2b2d"/>
+        <path id="path18" d="M207.631-614.507l1.529,13.231,8.469,4.7v-21.492Z" transform="translate(-206.364 619.329)" fill="#df2e31"/>
+        <path id="Rectangle_151847" data-name="Rectangle 151847" d="M4,0H16a0,0,0,0,1,0,0V32a0,0,0,0,1,0,0H4a4,4,0,0,1-4-4V4A4,4,0,0,1,4,0Z" transform="translate(-4.672 -4)" fill="#df2e31"/>
+        <path id="Rectangle_151848" data-name="Rectangle 151848" d="M0,0H12a4,4,0,0,1,4,4V28a4,4,0,0,1-4,4H0a0,0,0,0,1,0,0V0A0,0,0,0,1,0,0Z" transform="translate(11.328 -4)" fill="#af2b2d"/>
+        <path id="path20" d="M261.716-596.586l-2.36-4.929-2.078,4.929Zm.9,2.073h-6.257l-1.4,3.5-2.6.048,6.982-15.531,7.225,15.531h-2.413Z" transform="translate(-248.071 608.534)" fill="#f2f2f2"/>
+        <path id="path22" d="M355.859-606.495l.019,4.98,2.358,4.933h-2.371l-.005,2.066,3.279,0,1.533,3.55,2.491.046Z" transform="translate(-344.593 608.534)" fill="#b3b3b3"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,716 @@
+
+html, body {
+    min-height: 100vh;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    background: #F4F4F9;
+
+}
+
+
+
+.sidebar {
+    width: 270px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: white;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: none;
+    /* Remove shadow from entire sidebar */
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.sidebar::after {
+    content: "";
+    position: absolute;
+    top: 55px;
+    /* Start shadow below the logo */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 55px);
+    /* Apply shadow only below logo */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    /* Apply shadow */
+    z-index: -1;
+}
+
+
+
+.logo-section {
+    height: 55px;
+    /* display: flex; */
+    /* align-items: center; */
+    justify-content: center;
+    background-color: #ffffff;
+    padding: 0 1rem 0 2rem;
+}
+
+
+/* Hide sidebar on small screens */
+@media (max-width: 992px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+   
+    .sidebar-toggle {
+        font-size: 24px;
+        cursor: pointer;
+        color: white;
+        background: none;
+        border: none;
+        margin-right: 15px;
+        display: flex;
+        align-items: center;
+    }
+
+}
+
+/* Hide toggle button on large screens */
+@media (min-width: 992px) {
+    .sidebar-toggle {
+        display: none;
+    }
+}
+
+
+/* navbar csss -------------- */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 270px;
+    right: 0;
+    height: 55px;
+    background: #ffffff;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ensures left and right content are aligned properly */
+    padding: 0 20px;
+    z-index: 1000;
+}
+
+/* Breadcrumbs */
+.breadcrumb {
+    font-size: 14px;
+    color: #888;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.breadcrumb .active {
+    font-weight: bold;
+    color: #000;
+}
+
+/* Navbar Menu (Right-Side) */
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 15px; /* Ensures spacing matches the image */
+}
+
+/* Navbar Items */
+.navbar-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+    padding: 8px 12px; /* Adjusted padding for spacing */
+    position: relative;
+}
+
+/* Icons */
+.navbar-item i {
+    font-size: 18px;
+    color: #797A7A;
+}
+
+/* Language Selector */
+.flag-icon {
+    width: 30px;
+    height: auto;
+    margin-right: 5px;
+
+}
+
+/* Profile Section */
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.profile-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #323232;
+}
+
+.profile-role {
+    font-size: 14px;
+    color: #797A7A;
+}
+
+/* Notification Dot */
+.notification-dot {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 8px;
+    height: 8px;
+    background: orange;
+    border-radius: 50%;
+}
+
+/* Separators */
+.navbar-separator {
+    width: 1px;
+    height: 20px;
+    background: #ddd;
+    margin: 0 5px;
+}
+
+/* Dropdown Icon */
+.fa-chevron-down {
+    font-size: 12px;
+    color: #777;
+}
+
+/* Responsive Navbar */
+/* 📌 Medium Devices (Tablets & Small Laptops: max-width 992px) */
+@media (max-width: 992px) {
+    .navbar {
+        left: 0;
+        padding: 0 10px; /* Reduce padding */
+        background: #ffffff;
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+        font-size: 13px;
+        color: #585858;
+    }
+
+    /* Navbar Menu */
+    .navbar-menu {
+        display: none;
+        position: absolute;
+        top: 55px;
+        right: 0;
+        width: 100%;
+        background-color: #ffffff;
+        text-align: center;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transform: translateY(-10px);
+        transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+        border-top: 1px solid #ddd;
+    }
+
+    /* Open state */
+    .navbar-menu.open {
+        display: block;
+        opacity: 1;
+        max-height: 500px;
+        transform: translateY(0);
+        padding: 10px 0;
+    }
+
+    /* Navbar Items */
+    .navbar-item {
+        display: block;
+        color: #333;
+        padding: 12px 15px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    /* Profile Section */
+    .profile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 0;
+        gap: 10px;
+    }
+
+    .profile-img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    .profile-info {
+        text-align: left;
+    }
+
+    .profile-name {
+        font-size: 18px;
+        font-weight: bold;
+        color: #323232;
+    }
+
+    .profile-role {
+        font-size: 14px;
+        color: #797A7A;
+    }
+
+    /* Toggler Button */
+    .navbar-toggler {
+        display: flex;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    /* Separator */
+    .navbar-separator {
+        width: 100%;
+        height: 1px;
+        background: #ddd;
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 500px) {
+    .navbar {
+        left: 0;
+        padding: 5px 8px;
+        background: #ffffff;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+        font-size: 12px;
+        color: #585858;
+    }
+
+    /* Navbar Menu */
+    .navbar-menu {
+        display: none;
+        position: absolute;
+        top: 50px;
+        right: 0;
+        width: 100%;
+        background-color: #ffffff;
+        text-align: center;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transform: translateY(-10px);
+        transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        border-top: 1px solid #ddd;
+    }
+
+    /* Open state */
+    .navbar-menu.open {
+        display: block;
+        opacity: 1;
+        max-height: 400px;
+        transform: translateY(0);
+        padding: 8px 0;
+    }
+
+    /* Navbar Items */
+    .navbar-item {
+        display: block;
+        font-size: 14px;
+        color: #333;
+        padding: 10px 12px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    /* Navbar Icons */
+    .navbar-item i {
+        color: #555;
+        font-size: 16px;
+    }
+
+    /* Profile Section */
+    .profile {
+        flex-direction: column;
+        align-items: center;
+        padding: 8px 0;
+        gap: 6px;
+    }
+
+    .profile-img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+
+    .profile-name {
+        font-size: 16px;
+        font-weight: bold;
+        color: #323232;
+    }
+
+    .profile-role {
+        font-size: 12px;
+        color: #797A7A;
+    }
+
+    /* Toggler Button */
+    .navbar-toggler {
+        display: flex;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    /* Separator */
+    .navbar-separator {
+        width: 100%;
+        height: 1px;
+        background: #ddd;
+        margin: 8px 0;
+    }
+}
+
+/* main content-------------------------------------------- */
+.main-content {
+    position: absolute;
+    top: 55px; /* Below navbar */
+    left: 270px; /* Sidebar width */
+    height: calc(100vh - 55px); /* Adjust height based on navbar */
+    width: calc(100% - 270px); /* Remaining width */
+    padding: 15px;
+    background: #F4F4F9;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Prevents container overflow issues */
+}
+
+/* Ensure the card-container grows dynamically */
+.card-container {
+    width: 100%;
+    flex-grow: 1; /* Allows it to take available space */
+     /* Enables scrolling inside */
+    padding: 10px;
+}
+
+/* Container inside the card */
+.card-container .container {
+    width: 100%;
+    
+   
+    overflow-y: auto; /* Ensures inner scrolling */
+    max-height: calc(100vh - 100px); /* Prevents overflow */
+}
+
+/* Card Design */
+.card {
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow-y: auto;
+}
+
+/* Main content adjustments for large screens */
+@media (max-width: 1200px) {
+    .main-content {
+        left: 240px;
+        width: calc(100% - 240px);
+    }
+}
+
+/* Adjustments for tablets and medium screens (992px and below) */
+@media (max-width: 992px) {
+    .main-content {
+        left: 0;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .card-container {
+        padding: 5px;
+    }
+
+    .card {
+        padding: 10px;
+    }
+}
+
+/* Adjustments for smaller tablets (768px and below) */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 10px;
+        height: auto;
+        min-height: 100vh; /* Ensure it stretches properly */
+    }
+
+    .card-container {
+        padding: 5px;
+    }
+
+    .card {
+        padding: 10px;
+    }
+}
+
+/* Specific adjustments for 556px */
+@media (max-width: 556px) {
+    .main-content {
+        padding: 5px;
+        height: auto;
+    }
+
+    .card {
+        padding: 8px;
+        border-radius: 8px;
+    }
+
+    /* Example: Hide an element below 556px */
+    .navbar-left {
+        display: none;
+    }
+}
+
+/* Adjustments for extra small screens (576px and below) */
+@media (max-width: 576px) {
+    .main-content {
+        padding: 5px;
+        height: auto;
+    }
+
+    .card {
+        padding: 5px;
+        border-radius: 5px;
+    }
+}
+
+
+
+
+
+/* Hover effect on accordion button */
+.accordion-button:hover {
+    background-color: #F4F4F9 !important;
+}
+
+/* Hover effect on list items */
+.list-group-item:hover {
+    background-color: #F4F4F9 !important;
+}
+
+
+.skill-color{
+    color: #A061F7;
+    background-color: #F2E6FF;
+    font-weight: 600;
+}
+
+
+/* extra content------- */
+
+/* Container styling */
+.search-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px; /* Limits size on larger screens */
+    /* padding: 10px; */
+}
+
+/* Label styling */
+.search-label {
+    font-weight: bold;
+    font-size: 14px;
+    color: #666; /* Light gray text */
+    margin-bottom: 5px;
+}
+
+/* Input styling */
+.search-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    background: #F8F9FA; /* Light background */
+    color: #333;
+    outline: none;
+}
+
+/* Input focus effect */
+.search-input:focus {
+    border-color: #A061F7; /* Highlight color */
+    box-shadow: 0 0 5px rgba(160, 97, 247, 0.5);
+}
+
+/* ============================= */
+/* 📱 Responsive Media Queries 📱 */
+/* ============================= */
+
+/* 🔹 Tablets & Small Screens */
+@media (max-width: 768px) {
+    .search-container {
+        max-width: 100%; /* Full width on small screens */
+    }
+
+    .search-input {
+        font-size: 12px;
+        padding: 8px;
+    }
+}
+
+/* 🔹 Mobile Screens */
+@media (max-width: 480px) {
+    .search-label {
+        font-size: 13px;
+    }
+
+    .search-input {
+        font-size: 12px;
+        padding: 7px;
+    }
+}
+
+/* General Styling */
+.search-label {
+    font-weight: bold;
+    color: #6c757d; /* Bootstrap's text-muted color */
+}
+
+.search-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Button Styling */
+.btn {
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {  /* Small devices */
+    .search-container {
+        width: 100%;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%; /* Buttons take full width */
+    }
+
+    .d-flex.flex-md-row {
+        flex-direction: column !important;
+    }
+
+    .d-flex.gap-2 {
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {  /* Extra small devices */
+    .search-input {
+        padding: 6px;
+        font-size: 14px;
+    }
+
+    .btn {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+}
+
+
+/* extra css */
+
+.enable-on-hover {
+    opacity: 0.6;  /* Looks disabled */
+    cursor: not-allowed;
+}
+
+.enable-on-hover:hover {
+    opacity: 1;  /* Fully visible when hovered */
+    cursor: pointer;
+    pointer-events: auto; /* Allows clicking */
+}
+
+.enable-on-hover:not(:hover) {
+    pointer-events: none; /* Disable click when not hovered */
+}
+
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    border: 2px solid #d0d4fc;
+    border-radius: 5px;
+    height: 52px; /* Adjust height */
+    background: #ffffff;
+    padding: 12px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Light shadow */
+    transition: box-shadow 0.3s ease-in-out;
+    
+}
+.skill-item:hover {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); 
+}
+
+.skill-icon {
+    width: 25px; /* Adjust size */
+    height: 25px;
+    margin-right: 8px;
+}
+
+.action-btn {
+    padding: 2px 6px; /* Adjust button size */
+}
+
+.skill-name {
+    font-size: 14px;
+    color: #6C757D; /* Adjust text size */
+}
+
+
+
+
